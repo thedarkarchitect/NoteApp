@@ -1,6 +1,6 @@
-package com.example.noteapp.feature_note.domain.repository
+package com.example.noteapp.feature_note.data.repository
 
-import com.example.noteapp.feature_note.domain.model.Note
+import com.example.noteapp.feature_note.data.data_source.Note
 import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository { //note repo interface

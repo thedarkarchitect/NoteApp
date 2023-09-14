@@ -1,4 +1,4 @@
-package com.example.noteapp.feature_note.domain.model
+package com.example.noteapp.feature_note.data.data_source
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -20,3 +20,5 @@ data class Note(
         val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 }
+
+class InvalidNoteException(message: String): Exception(message)
