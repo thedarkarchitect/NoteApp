@@ -3,10 +3,9 @@ package com.example.noteapp.di
 import android.content.Context
 import com.example.noteapp.feature_note.data.data_source.NoteDatabase
 import com.example.noteapp.feature_note.data.repository.NoteRepositoryImpl
-import com.example.noteapp.feature_note.data.repository.NoteRepository
-import com.example.noteapp.feature_note.data.use_case.DeleteNote
-import com.example.noteapp.feature_note.data.use_case.GetNotes
-import com.example.noteapp.feature_note.data.use_case.NoteUseCases
+import com.example.noteapp.feature_note.domain.use_case.DeleteNote
+import com.example.noteapp.feature_note.domain.use_case.GetNotes
+import com.example.noteapp.feature_note.domain.use_case.NoteUseCases
 
 /*
 * App container for Dependency injection

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.noteapp.feature_note.data.data_source.InvalidNoteException
 import com.example.noteapp.feature_note.data.data_source.Note
-import com.example.noteapp.feature_note.data.repository.NoteRepository
 import com.example.noteapp.feature_note.data.util.NoteOrder
 import com.example.noteapp.feature_note.data.util.OrderType
 import kotlinx.coroutines.Job

@@ -1,7 +1,7 @@
-package com.example.noteapp.feature_note.data.use_case
+package com.example.noteapp.feature_note.domain.use_case
 
 import com.example.noteapp.feature_note.data.data_source.Note
-import com.example.noteapp.feature_note.data.repository.NoteRepository
+import com.example.noteapp.feature_note.domain.repository.NoteRepository
 
 class DeleteNote(
     private val repository: NoteRepository

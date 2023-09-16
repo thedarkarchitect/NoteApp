@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -67,10 +68,19 @@ dependencies {
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-    //rooom
+    //dagger
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.work:work-runtime-ktx:2.8.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    //room
     implementation("androidx.room:room-runtime:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
+
+
 
 
 

@@ -1,9 +1,9 @@
-package com.example.noteapp.feature_note.data.use_case
+package com.example.noteapp.feature_note.domain.use_case
 
 import com.example.noteapp.feature_note.data.data_source.Note
-import com.example.noteapp.feature_note.data.repository.NoteRepository
 import com.example.noteapp.feature_note.data.util.NoteOrder
 import com.example.noteapp.feature_note.data.util.OrderType
+import com.example.noteapp.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -13,7 +13,7 @@ class GetNotes(
     operator fun invoke(
         noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)
     ): Flow<List<Note>>{
-        return repository.getAllNotes().map{notes ->
+        return repository.getAllNotes().map{ notes ->
             when(noteOrder.orderType){
                 is OrderType.Ascending -> {
                     when(noteOrder){
