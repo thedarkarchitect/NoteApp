@@ -2,6 +2,7 @@ package com.example.noteapp.feature_note.data.repository
 
 import com.example.noteapp.feature_note.data.data_source.NoteDao
 import com.example.noteapp.feature_note.data.data_source.Note
+import com.example.noteapp.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
 class NoteRepositoryImpl(

@@ -7,7 +7,7 @@ import com.example.noteapp.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class GetNotes(
+class GetAllNotes(
     private val repository: NoteRepository
 ) {
     operator fun invoke(
