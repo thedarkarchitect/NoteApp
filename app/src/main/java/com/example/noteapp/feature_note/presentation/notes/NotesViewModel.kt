@@ -5,7 +5,6 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.noteapp.feature_note.data.data_source.InvalidNoteException
 import com.example.noteapp.feature_note.data.data_source.Note
 import com.example.noteapp.feature_note.data.util.NoteOrder
 import com.example.noteapp.feature_note.data.util.OrderType
@@ -67,17 +66,6 @@ class NotesViewModel @Inject constructor(
         }
     }
 
-
-    @Throws(InvalidNoteException::class)
-    private suspend fun addNote(note: Note){
-        if(note.title.isBlank()){
-            throw InvalidNoteException("The title of the note can't be empty.")
-        }
-        if(note.content.isBlank()){
-            throw InvalidNoteException("The content of the note can't be empty.")
-        }
-        noteRepository.insertNote(note)
-    }
 
     private fun getAllNotes(noteOrder: NoteOrder){
         getNotesJob?.cancel()
