@@ -3,21 +3,18 @@ package com.example.noteapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.noteapp.feature_note.presentation.add_edit_notes.AddEditNoteScreen
-import com.example.noteapp.feature_note.presentation.notes.NotesScreen
-import com.example.noteapp.feature_note.presentation.util.Screen
+import com.example.noteapp.presentation.add_edit_note.components.AddEditNoteEvent
+import com.example.noteapp.presentation.notes.NotesViewModel
+import com.example.noteapp.presentation.notes.components.NoteScreen
+import com.example.noteapp.presentation.util.Screen
 import com.example.noteapp.ui.theme.NoteAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,29 +30,34 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.NotesScreen.route
+                        startDestination = Screen.NoteScreen.route
                     ){
-                        composable(route = Screen.NotesScreen.route){
-                            NotesScreen(navController = navController)
+                        composable(route = Screen.NoteScreen.route) {
+                            val noteScreenViewModel = hiltViewModel<NotesViewModel>()
+                            NoteScreen(
+                                state = noteScreenViewModel.state.value,
+                                onEvent = noteScreenViewModel::onEvent,
+                                navController = navController
+                            )
                         }
                         composable(
-                            route = Screen.AddEditNoteScreen.route +
-                                    "?noteId={noteId}&noteColor={noteColor}",
+                            route = Screen.AddEditNoteScreen.route + "?noteId={noteId}&noteColor={noteColor}",
                             arguments = listOf(
-                                navArgument(
-                                    name = "noteId"
-                                ){
+                                navArgument(name = "noteId"){
                                     type = NavType.IntType
                                     defaultValue = -1
                                 },
-                                navArgument(name="noteColor"){
+                                navArgument(name = "noteColor"){
                                     type = NavType.IntType
                                     defaultValue = -1
                                 }
                             )
                         ){
-                            val color = it.arguments?.getInt("noteColor") ?: -1
-                            AddEditNoteScreen(navController = navController, noteColor = color)
+                            val color = it.arguments?.getInt("noteColor") ?: -1 //it stands for the NavBackStackEntry values
+                            AddEditNoteEvent(
+                                navController = navController,
+                                noteColor = color
+                            )
                         }
                     }
                 }
