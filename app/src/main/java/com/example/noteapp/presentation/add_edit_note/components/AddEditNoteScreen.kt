@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -141,7 +142,7 @@ fun AddEditNoteEvent(
                     )
                 }
             }
-            Spacer(modifier = modifier.height(8.dp))
+            Spacer(modifier = modifier.height(50.dp))
             TransparentHintTextField(
                 text = titleState.text,
                 hint = titleState.hint,
@@ -156,7 +157,9 @@ fun AddEditNoteEvent(
                 textStyle = MaterialTheme.typography.bodyLarge,
                 maxLines = 1
             )
-            Spacer(modifier = modifier.height(12.dp))
+
+            Spacer(modifier = modifier.height(16.dp))
+            Divider(thickness = 2.dp, color = Color.Black)
 //            TransparentHintTextField(
 //                text = contentState.text,
 //                hint = contentState.hint,
@@ -179,7 +182,7 @@ fun AddEditNoteEvent(
                     onValueChange = {
                         viewModel.onEvent(AddEditNoteEvent.EnteredContent(it))
                     },
-                    singleLine = true,
+                    singleLine = false,
                     textStyle = MaterialTheme.typography.bodyLarge,
                     maxLines = 10,
                     modifier = modifier

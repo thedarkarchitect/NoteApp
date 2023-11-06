@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,6 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -67,10 +69,10 @@ fun NoteItem(
                 )
             }
         }
-        Column{
+        Column(modifier = modifier.fillMaxWidth()){
             Column(
                 modifier = modifier
-                    .fillMaxSize()
+//                    .fillMaxSize()
                     .padding(16.dp)
                     .padding(end = 32.dp)
             ) {
@@ -90,16 +92,20 @@ fun NoteItem(
                     overflow = TextOverflow.Ellipsis
                 )
             }
-            Spacer(modifier = modifier.height(4.dp))
-            IconButton(
-                onClick = onDeleteClick,
-//            modifier = modifier.align(Alignment.BottomEnd)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    tint = Color.Black,
-                    contentDescription = "Delete note"
-                )
+            Box(
+//                contentAlignment = Alignment.BottomEnd,
+
+            ){
+                IconButton(
+                    onClick = onDeleteClick,
+//                    modifier = modifier.align(Alignment.BottomEnd)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        tint = Color.Black,
+                        contentDescription = "Delete note"
+                    )
+                }
             }
         }
     }
